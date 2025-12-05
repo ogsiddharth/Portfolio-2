@@ -18,6 +18,7 @@
 
     <canvas id="starfield"></canvas>
     <div class="overlay"></div>
+    
 
     <nav>
         <div class="logo">Siddharth<span>.dev</span></div>
@@ -32,6 +33,23 @@
         </div>
     </nav>
 
+  <div class="space-assets">
+    
+    <div id="earth-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Earth_Western_Hemisphere_transparent_background.png/1200px-Earth_Western_Hemisphere_transparent_background.png" alt="Earth" id="earth-img">
+    </div>
+    
+    <div id="rocket-container">
+       <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" alt="Rocket" class="rocket-body">
+        
+        <div class="exhaust-flame"></div>
+        <div class="exhaust-fumes">
+            <span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+
+</div>
+
     <section id="home" class="hero">
         <div class="hero-content">
             <p class="greeting">Hello, I am</p>
@@ -44,11 +62,11 @@
                 <a href="#contact" class="btn secondary">Contact Me</a>
             </div>
         </div>
-        <div class="hero-visual">
+        <!-- <div class="hero-visual">
             <div class="planet">
                 <div class="satellite"></div>
             </div>
-        </div>
+        </div> -->
     </section>
 
     <section id="about" class="section reveal">
@@ -114,21 +132,20 @@
             </div>
 
             <div class="project-card tilt-card">
-    <div class="card-image">
-        <img src="https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?auto=format&fit=crop&w=500&q=80" alt="Music Player App">
-    </div>
-    <div class="card-content">
-        <h3>Melody Stream App</h3>
-        <p>A dynamic music player built with JavaScript. Features include play/pause toggle, progress bar, and next/prev track functionality.</p>
-        <div class="tech-stack">
-            <span>JavaScript</span><span>DOM API</span><span>CSS3</span>
-        </div>
-        <div class="card-links">
-            <a href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
-            <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live</a>
-        </div>
-    </div>
-</div>
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&w=500&q=80" alt="Portfolio v1">
+                </div>
+                <div class="card-content">
+                    <h3>Weather App</h3>
+                    <p>Real-time weather application using OpenWeatherMap API with location detection.</p>
+                    <div class="tech-stack">
+                        <span>JS</span><span>API</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    </div>
+                </div>
+            </div>
 
             <div class="project-card tilt-card">
                 <div class="card-image">
@@ -180,15 +197,26 @@
         </div>
     </section>
 
-    <footer class="footer-detailed">
+   <footer class="footer-detailed">
+    
+   <div class="footer-blackhole-container">
+    <div class="gargantua-wrapper">
+        <div class="gravitational-lens"></div>
+        <div class="accretion-disk"></div>
+        <div class="event-horizon"></div>
+    </div>
+</div>
+    
+    <div class="footer-content-wrapper" style="position: relative; z-index: 2;">
         <div class="footer-container">
             <div class="footer-col">
                 <h3>Siddharth<span>.dev</span></h3>
                 <p>
                     Building digital experiences with code and creativity. 
-                    Always learning, always coding.
+                    Always learning, always coding to infinity and beyond.
                 </p>
             </div>
+    
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul>
@@ -198,6 +226,7 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
+    
             <div class="footer-col">
                 <h4>Contact Info</h4>
                 <ul class="contact-list">
@@ -216,10 +245,12 @@
                 </ul>
             </div>
         </div>
+    
         <div class="footer-bottom">
-            <p>&copy; 2025 Siddharth Maurya. All Rights Reserved.</p>
+            <p>&copy; 2025 Siddharth Maurya. Built for the cosmos.</p>
         </div>
-    </footer>
+    </div>
+</footer>
 
     <script src="script.js"></script>
 </body>
