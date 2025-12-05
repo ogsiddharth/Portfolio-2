@@ -17,6 +17,10 @@ function resizeCanvas() {
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
+
+
+
+
 // --- Star Class ---
 class Star {
     constructor() {
@@ -210,3 +214,117 @@ copyBtn.addEventListener('click', () => {
         setTimeout(() => { copyBtn.innerHTML = originalText; }, 2000);
     });
 });
+
+
+
+
+/* ========================
+   SCROLL ANIMATIONS & BLACK HOLE TRIGGER 🚀🌍🕳️
+   ======================== */
+
+const earthContainer = document.getElementById('earth-container');
+const rocketContainer = document.getElementById('rocket-container');
+const footer = document.querySelector('.footer-detailed');
+
+function updateSpaceAssets() {
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.body.scrollHeight - windowHeight;
+    const scrollPercent = scrollY / docHeight;
+
+    // --- Calculate Trigger Point ---
+    // Footer ka top position pata karo
+    const footerTop = footer.offsetTop;
+    // Trigger point: Jab screen ka bottom hissa footer ke top ko touch kare
+    // Thoda sa buffer (-100px) diya hai taaki effect jaldi shuru ho
+    const triggerPoint = footerTop - windowHeight + 100;
+
+    // --- CHECK: Are we near the Black Hole? ---
+    if (scrollY > triggerPoint) {
+        // YES: Footer aa gaya! Fall in mode activate karo.
+        if (!earthContainer.classList.contains('is-falling')) {
+            earthContainer.classList.add('is-falling');
+            rocketContainer.classList.add('is-falling');
+            
+            // Optional: Rocket ka smoke band kar do jab woh gir raha ho
+            document.querySelector('.exhaust-fumes').style.display = 'none';
+            document.querySelector('.exhaust-flame').style.display = 'none';
+        }
+    } else {
+        // NO: Abhi upar hain. Normal scrolling mode.
+        // Agar 'is-falling' class lagi hai to hata do (agar user wapas upar scroll kare)
+        if (earthContainer.classList.contains('is-falling')) {
+            earthContainer.classList.remove('is-falling');
+            rocketContainer.classList.remove('is-falling');
+            // Smoke wapas on karo
+            document.querySelector('.exhaust-fumes').style.display = 'block';
+            document.querySelector('.exhaust-flame').style.display = 'block';
+        }
+
+        // --- NORMAL SCROLL LOGIC (Jab tak gire nahi) ---
+        
+        // Earth Parallax
+        earthContainer.style.transform = `translateY(${scrollY * 0.15}px)`;
+
+        // Rocket Path
+        const rocketTop = 10 + (scrollPercent * 80); 
+        const rocketLeft = 50 + (Math.sin(scrollY * 0.0025) * 35); 
+        const rotation = (Math.cos(scrollY * 0.0025) * 15);
+
+        rocketContainer.style.top = `${rocketTop}%`;
+        rocketContainer.style.left = `${rocketLeft}%`;
+        rocketContainer.style.transform = `rotate(${rotation}deg)`;
+    }
+}
+
+// Scroll aur Load dono par check karo
+window.addEventListener('scroll', updateSpaceAssets);
+window.addEventListener('load', updateSpaceAssets);
+
+
+
+
+
+
+
+/* ========================
+   INTERACTIVE EARTH ROTATION 🌍👆
+   ======================== */
+
+const earthImage = document.getElementById('earth-img');
+const earthWrapper = document.getElementById('earth-container');
+
+// Jab mouse Earth ke upar move kare
+earthWrapper.addEventListener('mousemove', (e) => {
+    // Earth ka center point nikalna
+    const rect = earthWrapper.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    // Mouse center se kitna door hai (X aur Y axis par)
+    const mouseX = e.clientX - centerX;
+    const mouseY = e.clientY - centerY;
+
+    // Rotation calculate karna (Divide by 5 to reduce speed)
+    // RotateY: Left-Right ghumane ke liye
+    // RotateX: Up-Down tilt karne ke liye (Inverse (-) taaki natural lage)
+    const rotateY = mouseX / 5; 
+    const rotateX = -(mouseY / 5);
+
+    // Transform apply karna (3D look ke liye perspective zaroori hai)
+    earthImage.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(1.1)`;
+});
+
+// Jab mouse Earth se hatt jaye, to wapas normal ho jaye
+earthWrapper.addEventListener('mouseleave', () => {
+    // Rotation hata do taaki wapas CSS animation (Gol ghumna) shuru ho jaye
+    earthImage.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)';
+});
+
+
+
+
+
+
+
+
