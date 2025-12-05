@@ -49,6 +49,11 @@ body {
     pointer-events: none;
 }
 
+
+
+
+
+
 /* Typography */
 h1, h2, h3 {
     font-family: var(--font-heading);
@@ -620,3 +625,295 @@ input:focus, textarea:focus {
         margin: 5px auto 0;
     }
 }
+
+
+
+/* ========================
+   REALISTIC SPACE ASSETS 🌍🚀
+   ======================== */
+
+.space-assets {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* --- EARTH REALISTIC ANIMATION --- */
+#earth-container {
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    width: 300px;
+    height: 300px;
+    z-index: 1;
+    /* JS sirf position change karega, rotation CSS karega */
+    transition: transform 0.1s linear; 
+}
+
+#earth-img {
+    width: 100%;
+    height: 100%;
+    /* Filter to make it look like space lighting */
+    filter: drop-shadow(-20px 10px 30px rgba(0, 0, 0, 0.9)) brightness(0.9);
+    /* Continuous Rotation */
+    animation: earthSpin 60s linear infinite; 
+}
+
+@keyframes earthSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* --- REALISTIC ROCKET WRAPPER --- */
+#rocket-container {
+    position: absolute;
+    top: -10%; /* Start hidden */
+    left: 50%;
+    width: 80px; /* Size control */
+    z-index: 10;
+    /* Smooth movement */
+    transition: transform 0.2s ease-out, top 0.2s ease-out, left 0.2s ease-out;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+}
+
+.rocket-body {
+    width: 100%;
+    transform: rotate(45deg); /* Image ko tilt kiya */
+    position: relative;
+    z-index: 2;
+}
+
+/* --- ENGINE FLAME (Core Fire) --- */
+.exhaust-flame {
+    position: absolute;
+    bottom: -15px;
+    left: -10px;
+    width: 30px;
+    height: 50px;
+    background: linear-gradient(to bottom, #ffeb3b, #ff9800, transparent);
+    border-radius: 50% 50% 30% 30%;
+    filter: blur(5px);
+    opacity: 0.8;
+    transform: rotate(45deg);
+    animation: flamePulse 0.1s infinite alternate;
+    z-index: 1;
+}
+
+@keyframes flamePulse {
+    0% { height: 50px; opacity: 0.9; }
+    100% { height: 40px; opacity: 0.7; }
+}
+
+/* --- EXHAUST FUMES (Fog/Smoke Trail) --- */
+.exhaust-fumes span {
+    width: 20px;
+    height: 20px;
+    background: rgba(200, 200, 200, 0.4);
+    border-radius: 50%;
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    animation: smokeMove 0.5s linear infinite;
+    filter: blur(8px);
+    z-index: 0;
+}
+
+/* Multiple smoke particles for trail effect */
+.exhaust-fumes span:nth-child(1) { animation-delay: 0s; }
+.exhaust-fumes span:nth-child(2) { animation-delay: 0.1s; left: -10px; bottom: -30px; }
+.exhaust-fumes span:nth-child(3) { animation-delay: 0.2s; left: -25px; bottom: -15px; }
+.exhaust-fumes span:nth-child(4) { animation-delay: 0.3s; left: -5px; bottom: -40px; }
+
+@keyframes smokeMove {
+    0% {
+        transform: translateY(0) scale(1) rotate(45deg);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(60px) scale(2) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* Mobile Fixes */
+@media (max-width: 768px) {
+    #earth-container {
+        width: 150px;
+        height: 150px;
+        right: -30px;
+    }
+    #rocket-container {
+        width: 50px;
+    }
+}
+
+
+
+/* ========================
+   REAL INTERSTELLAR GARGANTUA (White/Gold Theme) 🌌
+   ======================== */
+
+.footer-detailed {
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    padding-top: 250px; /* Space for the giant hole */
+    padding-bottom: 50px;
+}
+
+.footer-blackhole-container {
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.gargantua-wrapper {
+    position: relative;
+    width: 800px; /* Bada size */
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Poore system ko thoda tilt kiya */
+    transform: scale(0.8); 
+}
+
+/* 1. THE EVENT HORIZON (Pure Black Sphere) */
+.event-horizon {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    background-color: #000;
+    border-radius: 50%;
+    z-index: 10;
+    /* Whiteish/Blueish inner rim (Hawking Radiation feel) */
+    box-shadow: inset 0 0 10px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* 2. THE ACCRETION DISK (Flat Ring) */
+.accretion-disk {
+    position: absolute;
+    width: 700px;
+    height: 220px; /* Flattened height */
+    border-radius: 50%;
+    z-index: 5;
+    /* Interstellar Gradient: White Hot Center -> Golden Edge */
+    background: radial-gradient(
+        ellipse at center,
+        rgba(0,0,0,0) 40%, /* Beech me khali */
+        #ffffff 45%,       /* White Hot Inner Edge */
+        #ffda77 55%,       /* Gold */
+        #ff9d00 65%,       /* Deep Orange fade */
+        transparent 80%
+    );
+    /* Disk Glow */
+    box-shadow: 0 0 30px 10px rgba(255, 215, 0, 0.2);
+    /* Slow Spin */
+    animation: galaxySpin 20s linear infinite;
+    /* Tilt Effect */
+    transform: rotateX(10deg); 
+}
+
+/* 3. GRAVITATIONAL LENS (The arch over the top) */
+.gravitational-lens {
+    position: absolute;
+    top: -40px;
+    width: 680px;
+    height: 300px;
+    border-radius: 50%;
+    /* Sirf upar ki taraf glow dikhana hai */
+    border-top: 20px solid rgba(255, 255, 255, 0.15);
+    filter: blur(15px);
+    z-index: 1; /* Black hole ke peeche */
+    box-shadow: 0 -20px 40px rgba(255, 220, 100, 0.4);
+}
+
+/* Animations */
+@keyframes galaxySpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* --- FALLING ANIMATION ADJUSTMENT --- 
+   Hole ka center ab thoda upar hai, animation update karo.
+*/
+.is-falling {
+    top: auto !important;
+    left: 50% !important;
+    bottom: 120px !important; /* Center of the new hole */
+    animation: suckIntoGargantua 2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards !important;
+    transition: none !important;
+    z-index: 20 !important;
+}
+
+@keyframes suckIntoGargantua {
+    0% {
+        transform: translate(-50%, 0) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        /* Spin fast, turn white (hot), and vanish */
+        transform: translate(-50%, 50px) scale(0) rotate(1080deg);
+        opacity: 0;
+        filter: brightness(2); /* Jal ke raakh hona */
+    }
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+    .gargantua-wrapper { transform: scale(0.4); }
+    .footer-detailed { padding-top: 100px; }
+}
+
+
+
+
+
+
+
+/* ========================
+   BLACK HOLE "SUCK IN" ANIMATION 🕳️⏬
+   ======================== */
+
+/* Yeh class JS add karega jab footer aayega */
+.is-falling {
+    /* Important: Override JS positioning */
+    top: auto !important; 
+    left: 50% !important;
+    /* Position them near the bottom center (where the hole is) */
+    bottom: 10% !important; 
+    /* The sucking animation */
+    animation: suckIntoBlackhole 1.5s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards !important;
+    /* Ensure transition doesn't fight animation */
+    transition: none !important; 
+}
+
+@keyframes suckIntoBlackhole {
+    0% {
+        /* Start from wherever they were */
+        transform: translate(-50%, 0) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        /* End point: Center of black hole, tiny, spinning fast, transparent */
+        transform: translate(-50%, 100px) scale(0.01) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+
+
+
